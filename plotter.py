@@ -15,4 +15,5 @@ for idx, line in enumerate(data, 1):
     plt.bar(np.arange(0, len(values)), values, width=1)
     ax.set_title(name)
 
+plt.savefig("/home/ilya/code/ded/2sem/hashtable/data/spectrum.png")
 plt.show()
