@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
+#include <cassert>
 #include "vector.hpp"
 #include "string_list.hpp"
 #include "hashtable.hpp"
@@ -9,6 +10,10 @@
 void readDataset(const char path[], char allWords[],
                    vector *wordsPtr,
                    const char delimiters[]) {
+    assert(path);
+    assert(wordsPtr);
+    assert(delimiters);
+
     FILE *inpFile = fopen(path, "r");
     fseek(inpFile, 0, SEEK_END);
     size_t szFile = (size_t) ftell(inpFile);
@@ -31,6 +36,9 @@ void readDataset(const char path[], char allWords[],
 
 
 void dumpListLengths(const char path[], hashtable_t *ht, bool createNew) {
+    assert(path);
+    assert(ht);
+
     FILE *file = fopen(path, createNew ? "w" : "a");
 
     fprintf(file, "%s:", ht->name);

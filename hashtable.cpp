@@ -32,6 +32,7 @@ size_t hashCharSum(const char *str) {
     assert(str);
     
     size_t ret = 0, strLen = strlen(str);
+
     for (size_t i = 0; i < strLen; ++i) {
         ret += (size_t) str[i];
     }

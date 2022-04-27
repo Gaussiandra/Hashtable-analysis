@@ -8,23 +8,16 @@
 #include "hashtable.hpp"
 #include "utils.hpp"
 
-#define SET_HASH_FN(name) (name), (#name)
-#define PUSH_NEW_HASHTABLE(...) {               \
-    hashtable_t *curHt = htCreate(__VA_ARGS__); \
-    vector_push(hashtables, &curHt);            \
-}
-
-const size_t SZ_HASHTABLE = 97;
-const size_t N_INSERTS    = 300 * SZ_HASHTABLE;
+const size_t N_INSERTS = 200000;
 
 int main() {
     vector *hashtables = vector_new(0, sizeof(hashtable_t*));
-    PUSH_NEW_HASHTABLE(SZ_HASHTABLE, SET_HASH_FN(hashConst));
-    PUSH_NEW_HASHTABLE(SZ_HASHTABLE, SET_HASH_FN(hashFirstChar));
-    PUSH_NEW_HASHTABLE(SZ_HASHTABLE, SET_HASH_FN(hashCharSum));
-    PUSH_NEW_HASHTABLE(SZ_HASHTABLE, SET_HASH_FN(hashStrlen));
-    PUSH_NEW_HASHTABLE(SZ_HASHTABLE, SET_HASH_FN(hashRoll));
-    PUSH_NEW_HASHTABLE(SZ_HASHTABLE, SET_HASH_FN(hashPoly));
+    PUSH_NEW_HASHTABLE(400, SET_HASH_FN(hashConst));
+    PUSH_NEW_HASHTABLE(400, SET_HASH_FN(hashFirstChar));
+    PUSH_NEW_HASHTABLE(400, SET_HASH_FN(hashStrlen));
+    PUSH_NEW_HASHTABLE(4000, SET_HASH_FN(hashCharSum));
+    PUSH_NEW_HASHTABLE(4000, SET_HASH_FN(hashRoll));
+    PUSH_NEW_HASHTABLE(4000, SET_HASH_FN(hashPoly));
 
     char *allWords = nullptr;
     vector *wordsPtr = vector_new(0, sizeof(char*));
